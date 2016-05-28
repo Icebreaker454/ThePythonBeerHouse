@@ -10,8 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.utils.translation import ugettext_lazy as _
+
+from oscar.defaults import *
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -46,6 +50,7 @@ INSTALLED_APPS = [
 
     # More nice django-form styling and usability
     'widget_tweaks',
+    'paypal',
 
 ] + get_core_apps()
 
@@ -138,6 +143,28 @@ USE_L10N = True
 
 USE_TZ = True
 
+OSCAR_DEFAULT_CURRENCY = 'UAH'
+
+# PayPal credentials
+
+PAYPAL_API_USERNAME = 'icebreaker-facilitator_api1.quintagroup.org'
+PAYPAL_API_PASSWORD = 'K3SAV823T7V2H2G4'
+PAYPAL_API_SIGNATURE = 'AFcWxV21C7fd0v3bYYYRCpSSRl31A' + \
+    '4NlmiIUjzgEf0Fn3gSEjtL86TDc'
+
+
+OSCAR_DASHBOARD_NAVIGATION.append(
+    {
+        'label': _('PayPal'),
+        'icon': 'icon-globe',
+        'children': [
+            {
+                'label': _('Express transactions'),
+                'url_name': 'paypal-express-list',
+            },
+        ]
+    })
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
@@ -148,6 +175,8 @@ MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'public', 'media')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'assets'),
+)
 
-from oscar.defaults import *  # noqa
+MEDIA_ROOT = os.path.join(BASE_DIR, 'public', 'media')
