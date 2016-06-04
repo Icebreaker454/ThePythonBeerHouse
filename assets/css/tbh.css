@@ -1,8 +1,4 @@
-body {
+body.default {
   background-image: url('../img/background.jpg');
   opacity: 0.97;
-}
-
-.basket-mini {
-  color: white;
 }

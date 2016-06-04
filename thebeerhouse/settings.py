@@ -165,6 +165,7 @@ OSCAR_DASHBOARD_NAVIGATION.append(
         ]
     })
 
+OSCAR_SHOP_NAME = 'The Beer House'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
