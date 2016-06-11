@@ -2,3 +2,7 @@ body.default {
   background-image: url('../img/background.jpg');
   opacity: 0.97;
 }
+
+.shop-logo a {
+  content: url('../img/logo.svg');
+}

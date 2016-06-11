@@ -4,4 +4,7 @@
 *.sqlite3*
 *~
 
+logs/
+
 public/
+stunnel/

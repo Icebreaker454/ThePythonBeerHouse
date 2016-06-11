@@ -31,11 +31,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 from oscar import get_core_apps  # noqa
 # Application definition
 
 INSTALLED_APPS = [
+    'sslserver',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -143,7 +143,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-OSCAR_DEFAULT_CURRENCY = 'UAH'
+OSCAR_DEFAULT_CURRENCY = 'USD'
 
 # PayPal credentials
 
@@ -151,6 +151,41 @@ PAYPAL_API_USERNAME = 'icebreaker-facilitator_api1.quintagroup.org'
 PAYPAL_API_PASSWORD = 'K3SAV823T7V2H2G4'
 PAYPAL_API_SIGNATURE = 'AFcWxV21C7fd0v3bYYYRCpSSRl31A' + \
     '4NlmiIUjzgEf0Fn3gSEjtL86TDc'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d'
+            ' %(thread)d %(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs', 'debug.log'),
+        },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'paypal.express': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        }
+    },
+}
 
 
 OSCAR_DASHBOARD_NAVIGATION.append(

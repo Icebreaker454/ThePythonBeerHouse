@@ -1,0 +1,13 @@
+{% extends "oscar/checkout/payment_details.html" %}
+{% load i18n %}
+
+{% block payment_details %}
+    {% block payment_details_content %}
+        <p>{% trans "Choose one of the payment methods" %}</p>
+        <p>
+          {% if anon_checkout_allowed or request.user.is_authenticated %}
+            <a href="{% url 'paypal-redirect' %}"><img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;"></a>
+          {% endif %}
+        </p>
+    {% endblock payment_details_content %}
+{% endblock payment_details %}
