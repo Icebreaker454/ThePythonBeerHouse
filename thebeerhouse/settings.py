@@ -14,6 +14,8 @@ import os
 from django.utils.translation import ugettext_lazy as _
 
 from oscar.defaults import *
+from .payment_settings import (
+    PAYPAL_API_USERNAME, PAYPAL_API_PASSWORD, PAYPAL_API_SIGNATURE)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
@@ -145,12 +147,7 @@ USE_TZ = True
 
 OSCAR_DEFAULT_CURRENCY = 'USD'
 
-# PayPal credentials
 
-PAYPAL_API_USERNAME = 'icebreaker-facilitator_api1.quintagroup.org'
-PAYPAL_API_PASSWORD = 'K3SAV823T7V2H2G4'
-PAYPAL_API_SIGNATURE = 'AFcWxV21C7fd0v3bYYYRCpSSRl31A' + \
-    '4NlmiIUjzgEf0Fn3gSEjtL86TDc'
 
 LOGGING = {
     'version': 1,
